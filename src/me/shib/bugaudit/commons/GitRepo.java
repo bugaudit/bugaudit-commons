@@ -11,6 +11,7 @@ public final class GitRepo {
     private String owner;
     private String repoName;
     private String branch;
+    private Lang lang;
 
     private GitRepo(String url, String branch) {
         url = cleanRepoUrl(url);
@@ -20,6 +21,7 @@ public final class GitRepo {
         this.owner = url.replaceFirst(host + "/", "");
         this.owner = removeEndingSequence(owner, "/" + repoName);
         this.branch = branch;
+        this.lang = Lang.getCurrentLang();
     }
 
     public static GitRepo getRepo() {
@@ -118,6 +120,10 @@ public final class GitRepo {
         hostName = removeEndingSequence(hostName, "/");
         String[] split = hostName.split("/");
         return split[split.length - 1];
+    }
+
+    public Lang getLang() {
+        return lang;
     }
 
     public String getHost() {

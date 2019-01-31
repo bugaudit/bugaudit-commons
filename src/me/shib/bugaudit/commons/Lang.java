@@ -12,7 +12,7 @@ public enum Lang {
     private static final String langEnv = "BUGAUDIT_LANG";
     private static Lang lang;
 
-    public static synchronized Lang getCurrentLang() {
+    static synchronized Lang getCurrentLang() {
         if (lang == null) {
             try {
                 lang = Lang.valueOf(System.getenv(langEnv));

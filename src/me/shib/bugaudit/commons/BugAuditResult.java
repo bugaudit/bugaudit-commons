@@ -25,7 +25,7 @@ public class BugAuditResult {
         this.bugMap = new HashMap<>();
     }
 
-    public static String getBugAuditLabel() {
+    public String getBugAuditLabel() {
         return bugAuditLabel;
     }
 

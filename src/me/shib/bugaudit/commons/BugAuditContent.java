@@ -28,4 +28,21 @@ public class BugAuditContent {
         return urlCleanedText.toString();
     }
 
+    public String getContent(Type type) {
+        switch (type) {
+            case Markdown:
+                return markdownText;
+            case HTML:
+                return getHtmlContent();
+            case Jira:
+                return getJiraContent();
+            default:
+                return markdownText;
+        }
+    }
+
+    public enum Type {
+        Markdown, HTML, Jira
+    }
+
 }

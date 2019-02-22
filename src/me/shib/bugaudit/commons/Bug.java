@@ -9,7 +9,7 @@ public final class Bug {
 
     private String title;
     private int priority;
-    private MarkdownContent description;
+    private BugAuditContent description;
     private Set<String> types;
     private Set<String> keys;
     private Set<String> tags;
@@ -49,11 +49,11 @@ public final class Bug {
         this.priority = priority;
     }
 
-    public MarkdownContent getDescription() {
+    public BugAuditContent getDescription() {
         return description;
     }
 
-    public void setDescription(MarkdownContent description) {
+    public void setDescription(BugAuditContent description) {
         this.description = description;
     }
 

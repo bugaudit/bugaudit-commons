@@ -1,18 +1,22 @@
 package me.shib.bugaudit.commons;
 
-public class MarkdownContent {
+public class BugAuditContent {
 
     private String markdownText;
 
-    public MarkdownContent(String markdownText) {
+    public BugAuditContent(String markdownText) {
         this.markdownText = markdownText;
     }
 
-    public String getMarkdownText() {
+    public String getMarkdownContent() {
         return markdownText;
     }
 
-    public String getJiraFormatText() {
+    public String getHtmlContent() {
+        return CommonMarkConverter.getConverter().convertToHTML(markdownText);
+    }
+
+    public String getJiraContent() {
         String jiraText = markdownText.replace("**", "*").replace("__", "*");
         jiraText = jiraText.replace("```", "{code}")
                 .replace("~~~", "{code}");

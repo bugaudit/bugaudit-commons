@@ -4,19 +4,19 @@ import org.commonmark.node.Node;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
 
-class CommonMarkConverter {
+class BugAuditContentUtils {
 
-    private static final CommonMarkConverter converter = new CommonMarkConverter();
+    private static final BugAuditContentUtils contentUtils = new BugAuditContentUtils();
     private Parser parser;
     private HtmlRenderer renderer;
 
-    private CommonMarkConverter() {
+    private BugAuditContentUtils() {
         this.parser = Parser.builder().build();
         this.renderer = HtmlRenderer.builder().build();
     }
 
-    static CommonMarkConverter getConverter() {
-        return converter;
+    static BugAuditContentUtils getContentUtils() {
+        return contentUtils;
     }
 
     String convertToHTML(String commonmarkText) {

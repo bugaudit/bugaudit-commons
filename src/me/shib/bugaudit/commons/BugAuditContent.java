@@ -13,7 +13,7 @@ public class BugAuditContent {
     }
 
     public String getHtmlContent() {
-        return CommonMarkConverter.getConverter().convertToHTML(markdownText);
+        return BugAuditContentUtils.getContentUtils().convertToHTML(markdownText);
     }
 
     public String getJiraContent() {
@@ -39,6 +39,20 @@ public class BugAuditContent {
             default:
                 return markdownText;
         }
+    }
+
+    public boolean isMatchingWith(String content, Type type) {
+        switch (type) {
+            case Markdown:
+                return markdownText.contentEquals(content);
+            case HTML:
+                String cleanedSource = getHtmlContent().replaceAll(">\\s+", ">").replaceAll("\\s+<", "<");
+                String cleanedDest = content.replaceAll(">\\s+", ">").replaceAll("\\s+<", "<");
+                return cleanedSource.contentEquals(cleanedDest);
+            case Jira:
+                return getJiraContent().contentEquals(content);
+        }
+        return false;
     }
 
     public enum Type {

@@ -1,6 +1,14 @@
 package me.shib.bugaudit.commons;
 
+import org.apache.commons.text.StringEscapeUtils;
+import org.commonmark.node.Node;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
+
 public class BugAuditContent {
+
+    private static final transient Parser parser = Parser.builder().build();
+    private static final transient HtmlRenderer renderer = HtmlRenderer.builder().build();
 
     private String markdownText;
 
@@ -8,12 +16,36 @@ public class BugAuditContent {
         this.markdownText = markdownText;
     }
 
+    private static String convertToHTML(String commonmarkText) {
+        Node document = parser.parse(commonmarkText);
+        return renderer.render(document);
+    }
+
+    private static String simplifyHTML(String htmlContent) {
+        htmlContent = htmlContent.replaceAll(">\\s+", ">");
+        htmlContent = htmlContent.replaceAll("\\s+<", "<");
+        return StringEscapeUtils.unescapeHtml4(htmlContent);
+    }
+
+    public static String simplifyContent(String content, Type type) {
+        switch (type) {
+            case Markdown:
+                return content;
+            case HTML:
+                return simplifyHTML(content);
+            case Jira:
+                return content;
+            default:
+                return content;
+        }
+    }
+
     public String getMarkdownContent() {
         return markdownText;
     }
 
     public String getHtmlContent() {
-        return BugAuditContentUtils.getContentUtils().convertToHTML(markdownText);
+        return convertToHTML(markdownText);
     }
 
     public String getJiraContent() {
@@ -39,20 +71,6 @@ public class BugAuditContent {
             default:
                 return markdownText;
         }
-    }
-
-    public boolean isMatchingWith(String content, Type type) {
-        switch (type) {
-            case Markdown:
-                return markdownText.contentEquals(content);
-            case HTML:
-                String cleanedSource = getHtmlContent().replaceAll(">\\s+", ">").replaceAll("\\s+<", "<");
-                String cleanedDest = content.replaceAll(">\\s+", ">").replaceAll("\\s+<", "<");
-                return cleanedSource.contentEquals(cleanedDest);
-            case Jira:
-                return getJiraContent().contentEquals(content);
-        }
-        return false;
     }
 
     public enum Type {

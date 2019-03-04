@@ -7,7 +7,7 @@ import java.util.List;
 
 public enum Lang {
 
-    GoLang, Java, NodeJS, Python, Ruby;
+    GoLang, Java, JavaScript, Python, Ruby;
 
     private static final String langEnv = "BUGAUDIT_LANG";
     private static Lang lang;
@@ -38,7 +38,7 @@ public enum Lang {
             } else if (files.contains("Gemfile.lock") || files.contains("Gemfile")) {
                 return Ruby;
             } else if (files.contains("package.json")) {
-                return NodeJS;
+                return JavaScript;
             }
         }
         return null;

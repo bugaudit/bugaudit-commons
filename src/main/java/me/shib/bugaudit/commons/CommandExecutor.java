@@ -8,7 +8,7 @@ import java.nio.charset.Charset;
  */
 public final class CommandExecutor {
 
-    private static boolean displayConsoleOutput = false;
+    private boolean displayConsoleOutput = false;
     private boolean dumpToFile;
     private StringBuilder consoleOutput;
     private File consoleOutputDumpFile;
@@ -30,7 +30,7 @@ public final class CommandExecutor {
      *
      * @param showConsoleLogs enabling this will print the console output that the executing command will provide else it will be hidden.
      */
-    public static void enableConsoleOutput(boolean showConsoleLogs) {
+    public void enableConsoleOutput(boolean showConsoleLogs) {
         displayConsoleOutput = showConsoleLogs;
     }
 

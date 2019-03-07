@@ -12,8 +12,9 @@ public class BugAuditResult {
     private Map<String, Integer> priorityMap;
     private Set<String> keys;
     private Map<String, Bug> bugMap;
+    private String scanPath;
 
-    public BugAuditResult(String tool, Lang lang, GitRepo repo, Map<String, Integer> priorityMap) {
+    public BugAuditResult(String tool, Lang lang, GitRepo repo, Map<String, Integer> priorityMap, String scanPath) {
         this.tool = tool;
         this.lang = lang;
         this.repo = repo;
@@ -21,6 +22,7 @@ public class BugAuditResult {
         if (this.priorityMap == null) {
             this.priorityMap = new HashMap<>();
         }
+        this.scanPath = scanPath;
         this.keys = new HashSet<>();
         this.bugMap = new HashMap<>();
     }
@@ -43,9 +45,13 @@ public class BugAuditResult {
     }
 
     public void addBug(Bug bug) {
-        bug.addTag(repo.toString());
-        bug.addTag(tool);
-        bug.addTag(lang.toString());
+        bug.addKey(repo.toString());
+        bug.addKey(tool);
+        bug.addKey(lang.toString());
+        if (scanPath != null && !scanPath.isEmpty()) {
+            bug.addKey(scanPath);
+        }
+        bug.addKey(lang.toString());
         StringBuilder key = new StringBuilder();
         List<String> keyList = new ArrayList<>(bug.getKeys());
         Collections.sort(keyList);

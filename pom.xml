@@ -37,7 +37,7 @@
         <repository>
             <id>bintray-shibme-maven</id>
             <name>shibme-maven</name>
-            <url>https://api.bintray.com/maven/shibme/maven/${project.artifactId}/;publish=1;override=1</url>
+            <url>https://api.bintray.com/maven/bugaudit/maven/${project.artifactId}/;publish=1;override=1</url>
         </repository>
     </distributionManagement>
 

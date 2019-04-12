@@ -38,7 +38,8 @@
         <repository>
             <id>bintray-${project.owner.id}-maven</id>
             <name>${project.owner.id}-maven</name>
-            <url>https://api.bintray.com/maven/${project.owner.id}/maven/${project.artifactId}/;publish=1;override=1</url>
+            <url>https://api.bintray.com/maven/${project.owner.id}/maven/${project.artifactId}/;publish=1;override=1
+            </url>
         </repository>
     </distributionManagement>
 
@@ -107,7 +108,7 @@
                         </goals>
                         <inherited>false</inherited>
                         <configuration>
-                            <overwriteArtifact>true</overwriteArtifact>
+                            <deleteRelease>true</deleteRelease>
                             <releaseName>${project.artifactId} - ${project.version}</releaseName>
                             <description>Use the maven dependency
                                 [![Maven

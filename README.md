@@ -1,5 +1,5 @@
 # BugAudit Commons
-[![Build Status](https://travis-ci.org/bugaudit/bugaudit-commons.svg)](https://travis-ci.org/bugaudit/bugaudit-commons)
-[![Percentage of issues still open](http://isitmaintained.com/badge/open/bugaudit/bugaudit-commons.svg)](http://isitmaintained.com/project/bugaudit/bugaudit-commons "Percentage of issues still open")
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/me.shib.bugaudit/bugaudit-commons/badge.svg)](https://maven-badges.herokuapp.com/maven-central/me.shib.bugaudit/bugaudit-commons)
+[![Build Status](https://gitlab.com/bugaudit/bugaudit-commons/badges/master/pipeline.svg)](https://gitlab.com/bugaudit/bugaudit-commons/pipelines)
 
 The common utils and models used across BugAudit

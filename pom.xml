@@ -5,7 +5,7 @@
 
     <groupId>me.shib.bugaudit</groupId>
     <artifactId>bugaudit-commons</artifactId>
-    <version>0.1</version>
+    <version>0.2</version>
     <name>BugAudit Commons</name>
     <description>The common utils and models used across BugAudit</description>
     <url>https://github.com/${project.owner.id}/${project.artifactId}</url>
